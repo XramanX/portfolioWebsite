@@ -17,15 +17,6 @@ const Gradient = () => {
 
   const gradientAngle = (mousePosition.x / window.innerWidth) * 360;
 
-  return (
-    // <div
-    //   style={{
-    //     background: ,
-    //     height: '100vh',
-    //     width: '100vw',
-    //   }}
-    // />
-  );
 };
 
 export default Gradient;
