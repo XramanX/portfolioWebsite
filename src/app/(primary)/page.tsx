@@ -1,7 +1,4 @@
 "use client";
-
-"use client";
-
 import { Box, ColorModeScript } from "@chakra-ui/react";
 import { Navbar } from "../components/navbar";
 import { ChakraProvider } from "@chakra-ui/react";

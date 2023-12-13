@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import { Box, Text, Flex, useBreakpointValue, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
