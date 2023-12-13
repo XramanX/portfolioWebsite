@@ -1,3 +1,5 @@
+"use client";
+
 import ProjectCard from "@/app/components/projectCard";
 import { Box, Flex, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
