@@ -1,3 +1,4 @@
+"use client";
 import ExperienceCard from "@/app/components/experienceCard";
 import { Box, Flex, Link, useBreakpointValue } from "@chakra-ui/react";
 import React, { useState } from "react";
