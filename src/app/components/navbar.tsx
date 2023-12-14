@@ -52,14 +52,16 @@ export function Navbar() {
             }
             background={
               selectedItem === item.label || hoveredItem === item.label
-                ? "teal.500"
-                : "gray"
+                ? theme.colors.brand.teal
+                : theme.colors.brand.ghost
             }
             transition="width 0.2s"
           />
           <Text
             fontSize="xs"
-            color={selectedItem === item.label ? "white" : "gray"}
+            color={
+              selectedItem === item.label ? "white" : theme.colors.brand.ghost
+            }
             letterSpacing="1.2px"
             pl={4}
             lineHeight="1"

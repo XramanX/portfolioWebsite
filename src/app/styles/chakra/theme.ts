@@ -21,12 +21,15 @@ export const theme = extendTheme({
   },
   colors: {
     brand: {
-      primary: "#605553",
+      primary: "#0E162E",
       secondary: "#332f2f",
       tertiary: "#2b2a2a",
-      quaternary: "#272323",
+      quaternary: "#101E42",
       quinary: "#222121",
-      teal:"#4DB6AC"
+      teal:"#4DB6AC",
+      ghost:"#8B9CBA",
+      skillTextColor:"#5BE3CF",
+      skillBgColor:"#183452"
     },
   },
   config,
