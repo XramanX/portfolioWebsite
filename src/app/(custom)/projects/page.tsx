@@ -54,12 +54,12 @@ const Projects = () => {
   const columns = isLargeScreen ? 2 : 1;
 
   return (
-    <Box id="experience-section">
+    <Box id="projects-section">
       <Flex
         flexDirection="column"
         gap={2}
         css={{
-          // columns: columns,
+          columns: columns,
           breakInside: "auto",
         }}
       >

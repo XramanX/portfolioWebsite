@@ -54,6 +54,7 @@ const Experience: React.FC<any> = () => {
 
   // Use the result to determine the number of columns
   const columns = isLargeScreen ? 2 : 1;
+
   return (
     <Box id="experience-section">
       <Flex
