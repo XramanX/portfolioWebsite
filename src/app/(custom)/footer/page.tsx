@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
     target: "_blank",
   };
   return (
-    <Box color="gray" gap={2} mt={5} p={2} w="98%">
+    <Box color={theme.colors.brand.ghost} gap={2} mt={5} padding={4} w="98%">
       <Text fontSize="xs">
         Whipped up in the coding battlefield of{" "}
         <Text

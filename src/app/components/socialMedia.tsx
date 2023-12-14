@@ -2,13 +2,14 @@ import React from "react";
 import { Flex, Link, Icon } from "@chakra-ui/react";
 import { FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { theme } from "../styles/chakra/theme";
 
 const SocialMediaLink: React.FC<{ href: string; icon: any }> = ({
   href,
   icon,
 }) => {
   const iconStyle = {
-    color: "gray.400",
+    color: theme.colors.brand.ghost,
     _hover: {
       color: "white",
       transform: "rotateY(180deg)",

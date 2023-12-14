@@ -74,7 +74,8 @@ const ExperienceCard: React.FC<any> = ({ index, experience }) => {
         p={4}
         _hover={{
           boxShadow:
-            "rgba(96, 85, 83, 0.2) -5px 5px, rgba(96, 85, 83, 0.2) -10px 10px, rgba(96, 85, 83, 0.1) -15px 15px, rgba(96, 85, 83, 0.1) -20px 20px, rgba(96, 85, 83, 0.05) -25px 25px",
+            "rgba(79, 129, 189, 0.2) -5px 5px, rgba(79, 129, 189, 0.2) -10px 10px, rgba(79, 129, 189, 0.1) -15px 15px, rgba(79, 129, 189, 0.1) -20px 20px, rgba(79, 129, 189, 0.05) -25px 25px",
+
           transform: "translateY(-1px)",
           transitionDuration: "0.4s",
           transitionTimingFunction: "ease-in-out",
@@ -92,7 +93,7 @@ const ExperienceCard: React.FC<any> = ({ index, experience }) => {
             mb={{ base: 2, md: 0 }}
             mr={{ base: 0, md: 4 }}
             flex={{ base: 1, md: 3 }}
-            color="gray"
+            color={theme.colors.brand.ghost}
           >
             <Text fontSize={{ base: "sm", md: "xs" }}>{jobDuration}</Text>
           </Box>
@@ -130,7 +131,10 @@ const ExperienceCard: React.FC<any> = ({ index, experience }) => {
             <Box mb={{ base: 2, md: 4 }}></Box>
 
             <Box mb={{ base: 4, md: 2 }}>
-              <Text fontSize={{ base: "xs", md: "md" }} color="gray">
+              <Text
+                fontSize={{ base: "xs", md: "md" }}
+                color={theme.colors.brand.ghost}
+              >
                 {description}
               </Text>
             </Box>

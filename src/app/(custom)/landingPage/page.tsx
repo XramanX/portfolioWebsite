@@ -15,9 +15,10 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import SocialMediaLinks from "../../components/socialMedia";
 import Footer from "../footer/page";
+import { theme } from "../../styles/chakra/theme";
 
 const LandingPage: React.FC = () => {
-  const [isLargeScreen] = useMediaQuery("(min-width: 48em)");
+  const [isLargeScreen] = useMediaQuery("(min-width: 1100px)");
   const [isSmallerThanMd] = useMediaQuery("(max-width: 48em)");
   const containerFlex = isLargeScreen ? { base: 1, md: 2 } : 1;
   const paddingValue = isLargeScreen ? 10 : 0;
@@ -61,7 +62,7 @@ const LandingPage: React.FC = () => {
               Ramandeep Singh
             </Text>
             <Text fontSize="lg">Full-Stack Developer</Text>
-            <Text fontSize="md" style={{ color: "gray" }}>
+            <Text fontSize="md" style={{ color: theme.colors.brand.ghost }}>
               Goal-oriented Software Developer with a passion for crafting
               innovative solutions and a commitment to continuous learning.
             </Text>

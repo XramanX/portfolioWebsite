@@ -11,7 +11,8 @@ const SkillBadge: React.FC<SkillBadgeProps> = ({ skill, index }) => {
   return (
     <Box
       key={index}
-      bgColor={theme.colors.brand.primary}
+      bgColor={theme.colors.brand.skillBgColor}
+      color={theme.colors.brand.skillTextColor}
       borderRadius="full"
       w="auto"
       h={"auto"}
