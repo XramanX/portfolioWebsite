@@ -1,10 +1,9 @@
 "use client";
-import ExperienceCard from "@/app/components/experienceCard";
-import { Box, Flex, Link, useBreakpointValue } from "@chakra-ui/react";
+import ExperienceCard from "../../components/experienceCard";
+import { Box, Flex, Link, useMediaQuery } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { TiArrowForward } from "react-icons/ti";
 import { motion } from "framer-motion";
-import { theme } from "@/app/styles/chakra/theme";
 type Props = {};
 type ExperienceProps = {
   jobDuration: string;
@@ -16,7 +15,7 @@ type ExperienceProps = {
   link: string;
 }[];
 
-const Experience: React.FC<Props> = () => {
+const Experience: React.FC<any> = () => {
   const experiences: ExperienceProps = [
     {
       jobDuration: "November 2021 - Present",
@@ -47,9 +46,14 @@ const Experience: React.FC<Props> = () => {
   const handleMouseLeave = () => {
     setHovered(false);
   };
-  const arrowSize = useBreakpointValue({ base: "14px", md: "16px" });
-  const columns = useBreakpointValue({ base: 1, md: 2 });
 
+  const arrowSize = "16px";
+
+  // Use useMediaQuery to check for the current breakpoint
+  const isLargeScreen = useMediaQuery("(min-width: 48em)");
+
+  // Use the result to determine the number of columns
+  const columns = isLargeScreen ? 2 : 1;
   return (
     <Box id="experience-section">
       <Flex
@@ -83,11 +87,10 @@ const Experience: React.FC<Props> = () => {
         >
           Check out my full Resume
           <motion.div
-            style={{ marginTop: "1px", marginLeft: "4px" }}
             animate={{ x: isHovered ? 10 : 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <TiArrowForward fontSize={arrowSize} />
+            <TiArrowForward style={{ marginTop: "1px", marginLeft: "4px" }} />
           </motion.div>
         </Link>
       </Flex>

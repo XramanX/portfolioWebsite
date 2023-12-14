@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
 
 type Props = {};
 
-const AboutMePage: React.FC<Props> = () => {
+const AboutMePage: React.FC<any> = () => {
   const highlightColor = useColorModeValue("teal.500", "teal.300");
   const highlightHoverColor = useColorModeValue("teal.500", "teal.300");
 

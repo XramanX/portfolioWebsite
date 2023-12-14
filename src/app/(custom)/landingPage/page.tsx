@@ -1,19 +1,14 @@
 "use client";
-
-import {
-  Box,
-  Flex,
-  Text,
-  Container,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, Container, useMediaQuery } from "@chakra-ui/react";
 import { Navbar } from "../../components/navbar";
-import AboutMePage from "@/app/(custom)/about/page";
+import AboutMePage from "../about/page";
 import Experience from "../experience/page";
 import Projects from "../projects/page";
 
 const LandingPage: React.FC = () => {
-  const paddingValue = useBreakpointValue({ base: 1, md: 10 });
+  const [isLargeScreen] = useMediaQuery("(min-width: 48em)");
+  const containerFlex = isLargeScreen ? { base: 1, md: 2 } : 1;
+  const paddingValue = isLargeScreen ? 10 : 1;
   return (
     <Container
       maxW="container.xl"
@@ -22,12 +17,7 @@ const LandingPage: React.FC = () => {
       textAlign="start"
       padding={paddingValue}
     >
-      <Flex
-        padding="4"
-        flexDirection="column"
-        gap={20}
-        flex={{ base: 1, md: 2 }}
-      >
+      <Flex padding="4" flexDirection="column" gap={20} flex={containerFlex}>
         <Flex flexDirection="column" gap={2}>
           <Text fontSize="2xl" fontWeight="bold">
             Ramandeep Singh
