@@ -19,6 +19,7 @@ const AboutMePage: React.FC<any> = () => {
       flexDirection="column"
       gap={2}
       id="about-section"
+      mb={5}
     >
       <Text>
         I discovered my love for coding during high school, where curiosity led

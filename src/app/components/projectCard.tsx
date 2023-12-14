@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Text, Flex, Image, useMediaQuery } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
@@ -33,75 +33,101 @@ const ProjectCard: React.FC<any> = ({ index, project }) => {
   };
 
   const [isSmallerThanMd] = useMediaQuery("(max-width: 48em)");
+  const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const card = document.getElementById(`project-card-${index}`);
+      if (card) {
+        const topOffset = card.getBoundingClientRect().top;
+        const isVisible = topOffset < window.innerHeight - 100;
+        setIsVisible(isVisible);
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [index]);
   return (
-    <Flex
-      direction={{ base: "column", md: "row" }}
-      align="center"
-      justify="space-between"
-      padding={4}
-      bg={isHovered ? "" : ""}
-      cursor="pointer"
-      _hover={{
-        boxShadow:
-          "rgba(96, 85, 83, 0.2) -5px 5px, rgba(96, 85, 83, 0.2) -10px 10px, rgba(96, 85, 83, 0.1) -15px 15px, rgba(96, 85, 83, 0.1) -20px 20px, rgba(96, 85, 83, 0.05) -25px 25px",
-        transform: "translateY(-1px)",
-        transitionDuration: "0.4s",
-        transitionTimingFunction: "ease-in-out",
-        bg: `rgba(96, 85, 83, 0.1)`,
-        cursor: "pointer",
-      }}
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+      transition={{ duration: 0.6, delay: 0.2 * index }}
     >
-      {isSmallerThanMd ? (
-        <></>
-      ) : (
-        <Box p={5} transform="rotate(-90deg)">
-          <Image
-            src={svgName === "goBoss" ? "/goBoss.png" : `/${svgName}.svg`}
-            alt={`${name}`}
-            w="130px"
-            h={"80px"}
-          />
-        </Box>
-      )}
-      <Box flex="1">
-        <Flex
-          mb={{ base: 2, md: 0 }}
-          fontSize={{ base: "sm", md: "md" }}
-          justify="start"
-          align="center"
-          color={isHovered ? theme.colors.brand.teal : ""}
-          transition={"color 0.4s"}
-        >
-          <Text fontSize="md" fontWeight="bold">
-            {name}
-          </Text>
-          <motion.div
-            animate={{ x: isHovered ? 6 : 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+      <Flex
+        id={`project-card-${index}`}
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        justify="space-between"
+        padding={4}
+        bg={isHovered ? "" : ""}
+        cursor="pointer"
+        _hover={{
+          boxShadow:
+            "rgba(96, 85, 83, 0.2) -5px 5px, rgba(96, 85, 83, 0.2) -10px 10px, rgba(96, 85, 83, 0.1) -15px 15px, rgba(96, 85, 83, 0.1) -20px 20px, rgba(96, 85, 83, 0.05) -25px 25px",
+          transform: "translateY(-1px)",
+          transitionDuration: "0.4s",
+          transitionTimingFunction: "ease-in-out",
+          bg: `rgba(96, 85, 83, 0.1)`,
+          cursor: "pointer",
+        }}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {isSmallerThanMd ? (
+          <></>
+        ) : (
+          <Box p={5} transform="rotate(-90deg)">
+            <Image
+              src={svgName === "goBoss" ? "/goBoss.png" : `/${svgName}.svg`}
+              alt={`${name}`}
+              w="130px"
+              h={"80px"}
+            />
+          </Box>
+        )}
+        <Box flex="1">
+          <Flex
+            mb={{ base: 2, md: 0 }}
+            fontSize={{ base: "sm", md: "md" }}
+            justify="start"
+            align="center"
+            color={isHovered ? theme.colors.brand.teal : ""}
+            transition={"color 0.4s"}
           >
-            {isHovered ? (
-              <MdOutlineKeyboardDoubleArrowRight
-              // fontSize={arrowSize}
-              />
-            ) : (
-              <MdOutlineKeyboardArrowRight
-              // fontSize={arrowSize}
-              />
-            )}
-          </motion.div>
-        </Flex>
-        <Text color="gray">{description}</Text>
-      </Box>
-    </Flex>
+            <Text fontSize="md" fontWeight="bold">
+              {name}
+            </Text>
+            <motion.div
+              animate={{ x: isHovered ? 6 : 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+            >
+              {isHovered ? (
+                <MdOutlineKeyboardDoubleArrowRight
+                // fontSize={arrowSize}
+                />
+              ) : (
+                <MdOutlineKeyboardArrowRight
+                // fontSize={arrowSize}
+                />
+              )}
+            </motion.div>
+          </Flex>
+          <Text color="gray">{description}</Text>
+        </Box>
+      </Flex>
+    </motion.div>
   );
 };
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
+// export async function getServerSideProps() {
+//   return {
+//     props: {},
+//   };
+// }
 export default ProjectCard;
