@@ -1,20 +1,19 @@
 "use client";
-
-import ProjectCard from "@/app/components/projectCard";
-import { Box, Flex, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
+import ProjectCard from "../../components/projectCard";
+import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 
 type Props = {};
 type ProjectProps = {
   name: string;
-  desription: string;
+  description: string;
   link: string;
   isClient: boolean;
   svgName: string;
 }[];
 
-const Projects: React.FC<Props> = () => {
-  const projects = [
+const Projects = () => {
+  const projects: ProjectProps = [
     {
       name: "LIMITLESS",
       link: "https://limitlessminds.com/",
@@ -51,7 +50,8 @@ const Projects: React.FC<Props> = () => {
     },
   ];
 
-  const columns = useBreakpointValue({ base: 1, md: 2 });
+  const [isLargeScreen] = useMediaQuery("(min-width: 48em)");
+  const columns = isLargeScreen ? 2 : 1;
 
   return (
     <Box id="experience-section">
@@ -59,7 +59,7 @@ const Projects: React.FC<Props> = () => {
         flexDirection="column"
         gap={2}
         css={{
-          columns: columns,
+          // columns: columns,
           breakInside: "auto",
         }}
       >

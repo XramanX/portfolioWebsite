@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Text, Flex, useBreakpointValue, Image } from "@chakra-ui/react";
+import { Box, Text, Flex, Image, useMediaQuery } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import {
   MdOutlineKeyboardArrowRight,
@@ -32,7 +32,7 @@ const ProjectCard: React.FC<any> = ({ index, project }) => {
     if (isClient && link !== "") window.open(link, "_blank");
   };
 
-  const arrowSize = useBreakpointValue({ base: "14px", md: "16px" });
+  const [isSmallerThanMd] = useMediaQuery("(max-width: 48em)");
 
   return (
     <Flex
@@ -55,19 +55,18 @@ const ProjectCard: React.FC<any> = ({ index, project }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {useBreakpointValue({
-        base: <></>,
-        md: (
-          <Box transform="rotate(-90deg)" p={5}>
-            <Image
-              src={svgName === "goBoss" ? "/goBoss.png" : `/${svgName}.svg`}
-              alt={`${name}`}
-              w="130px"
-              h={"80px"}
-            />
-          </Box>
-        ),
-      })}
+      {isSmallerThanMd ? (
+        <></>
+      ) : (
+        <Box p={5} transform="rotate(-90deg)">
+          <Image
+            src={svgName === "goBoss" ? "/goBoss.png" : `/${svgName}.svg`}
+            alt={`${name}`}
+            w="130px"
+            h={"80px"}
+          />
+        </Box>
+      )}
       <Box flex="1">
         <Flex
           mb={{ base: 2, md: 0 }}
@@ -85,9 +84,13 @@ const ProjectCard: React.FC<any> = ({ index, project }) => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
           >
             {isHovered ? (
-              <MdOutlineKeyboardDoubleArrowRight fontSize={arrowSize} />
+              <MdOutlineKeyboardDoubleArrowRight
+              // fontSize={arrowSize}
+              />
             ) : (
-              <MdOutlineKeyboardArrowRight fontSize={arrowSize} />
+              <MdOutlineKeyboardArrowRight
+              // fontSize={arrowSize}
+              />
             )}
           </motion.div>
         </Flex>
@@ -96,5 +99,9 @@ const ProjectCard: React.FC<any> = ({ index, project }) => {
     </Flex>
   );
 };
-
+export async function getServerSideProps() {
+  return {
+    props: {},
+  };
+}
 export default ProjectCard;

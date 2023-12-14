@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Box, Text, Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Text, Flex, useMediaQuery } from "@chakra-ui/react";
 import SkillBadge from "./skillbadge";
 import { color, motion } from "framer-motion";
 import {
@@ -41,7 +41,9 @@ const ExperienceCard: React.FC<any> = ({ index, experience }) => {
     window.open(link, "_blank");
   };
 
-  const arrowSize = useBreakpointValue({ base: "14px", md: "16px" });
+  const isSmallerThanMd = useMediaQuery("(max-width: 48em)"); // You can adjust the breakpoint as needed
+
+  const arrowSize = isSmallerThanMd ? "14px" : "16px";
 
   return (
     <Box
@@ -90,9 +92,13 @@ const ExperienceCard: React.FC<any> = ({ index, experience }) => {
               transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               {isHovered ? (
-                <MdOutlineKeyboardDoubleArrowRight fontSize={arrowSize} />
+                <MdOutlineKeyboardDoubleArrowRight
+                // fontSize={arrowSize}
+                />
               ) : (
-                <MdOutlineKeyboardArrowRight fontSize={arrowSize} />
+                <MdOutlineKeyboardArrowRight
+                // fontSize={arrowSize}
+                />
               )}
             </motion.div>
           </Flex>
