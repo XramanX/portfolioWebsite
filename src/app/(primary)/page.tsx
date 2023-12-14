@@ -27,6 +27,7 @@ export default function Home() {
 
   const gradientStyle = {
     backgroundImage: `radial-gradient(400px at ${cursorPosition.x}px ${cursorPosition.y}px, ${theme.colors.brand.quaternary} 15%, transparent 90%)`,
+    backgroundColor: theme.colors.brand.primary,
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",

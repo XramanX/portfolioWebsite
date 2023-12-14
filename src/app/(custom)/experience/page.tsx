@@ -4,6 +4,7 @@ import { Box, Flex, Link, useMediaQuery } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { TiArrowForward } from "react-icons/ti";
 import { motion } from "framer-motion";
+import { theme } from "../../styles/chakra/theme";
 type Props = {};
 type ExperienceProps = {
   jobDuration: string;
@@ -54,6 +55,7 @@ const Experience: React.FC<any> = () => {
 
   // Use the result to determine the number of columns
   const columns = isLargeScreen ? 2 : 1;
+
   return (
     <Box id="experience-section">
       <Flex
@@ -76,7 +78,7 @@ const Experience: React.FC<any> = () => {
           textDecoration="none"
           _hover={{
             textDecoration: "underline",
-            textDecorationColor: "teal.500",
+            textDecorationColor: theme.colors.brand.teal,
             textDecorationThickness: "1px",
             textUnderlinePosition: "under",
           }}

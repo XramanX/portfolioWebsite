@@ -1,12 +1,16 @@
 "use client";
 import React from "react";
 import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { theme } from "../../styles/chakra/theme";
 
 type Props = {};
 
 const AboutMePage: React.FC<any> = () => {
-  const highlightColor = useColorModeValue("teal.500", "teal.300");
-  const highlightHoverColor = useColorModeValue("teal.500", "teal.300");
+  const highlightColor = useColorModeValue(theme.colors.brand.teal, "teal.300");
+  const highlightHoverColor = useColorModeValue(
+    theme.colors.brand.teal,
+    "teal.300"
+  );
 
   const controllerCursorStyle = {
     cursor: "url('/game.svg'), auto",
@@ -15,10 +19,12 @@ const AboutMePage: React.FC<any> = () => {
   return (
     <Flex
       fontSize={{ base: "sm", md: "md" }}
-      color="gray"
+      color={theme.colors.brand.ghost}
       flexDirection="column"
       gap={2}
       id="about-section"
+      mb={5}
+      p={4}
     >
       <Text>
         I discovered my love for coding during high school, where curiosity led
