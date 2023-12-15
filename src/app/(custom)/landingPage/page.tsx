@@ -12,7 +12,7 @@ import AboutMePage from "../about/page";
 import Experience from "../experience/page";
 import Projects from "../projects/page";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SocialMediaLinks from "../../components/socialMedia";
 import Footer from "../footer/page";
 import { theme } from "../../styles/chakra/theme";
@@ -22,6 +22,48 @@ const LandingPage: React.FC = () => {
   const [isSmallerThanMd] = useMediaQuery("(max-width: 48em)");
   const containerFlex = isLargeScreen ? { base: 1, md: 2 } : 1;
   const paddingValue = isLargeScreen ? 10 : 0;
+  const [selectedNavItem, setSelectedNavItem] = useState("ABOUT");
+  const handleNavbarItemSelect = (label: string) => {
+    setSelectedNavItem(label);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutSection: any = document.getElementById("about-section");
+      const experienceSection: any =
+        document.getElementById("experience-section");
+      const projectsSection: any = document.getElementById("projects-section");
+      const footerSection: any = document.getElementById("footer-section");
+
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition < aboutSection.offsetTop + aboutSection.clientHeight) {
+        setSelectedNavItem("ABOUT");
+      } else if (
+        scrollPosition <
+        experienceSection.offsetTop + experienceSection.clientHeight
+      ) {
+        setSelectedNavItem("EXPERIENCE");
+      } else if (
+        scrollPosition <
+        projectsSection.offsetTop + projectsSection.clientHeight
+      ) {
+        setSelectedNavItem("PROJECTS");
+      } else if (
+        scrollPosition <
+        footerSection.offsetTop + footerSection.clientHeight
+      ) {
+        setSelectedNavItem("CONTACT");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   // const controls = useAnimation();
   // const bounceAnimation: any = {
   //   y: [0, -10, 0],
@@ -54,6 +96,7 @@ const LandingPage: React.FC = () => {
       >
         <Flex flexDirection="column" gap={2}>
           <Flex
+            padding={{ base: 1, md: 1, sm: 6 }}
             flexDirection="column"
             gap={2}
             w={isSmallerThanMd ? "auto" : "400px"}
@@ -71,19 +114,22 @@ const LandingPage: React.FC = () => {
             <></>
           ) : (
             <Flex mt={5}>
-              <Navbar />
+              <Navbar
+                onItemSelect={handleNavbarItemSelect}
+                selectedNavItem={selectedNavItem}
+              />
             </Flex>
           )}
         </Flex>
 
-        <Flex>
+        <Flex padding={{ base: 1, md: 1, sm: 6 }}>
           <SocialMediaLinks />
         </Flex>
       </Flex>
 
       <Box
         marginLeft={{ base: 0, md: "500px" }}
-        padding={{ base: 1, md: 4 }}
+        padding={{ base: 1, md: 4, sm: 6 }}
         flex={{ base: 1, md: 3 }}
         flexDirection="column"
         gap={20}

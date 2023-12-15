@@ -72,11 +72,12 @@ const ExperienceCard: React.FC<any> = ({ index, experience }) => {
       <Box
         key={index}
         p={4}
+        bg={isHovered ? "" : "rgba(79, 129, 189, 0.1)"}
         _hover={{
           boxShadow:
             "rgba(79, 129, 189, 0.2) -5px 5px, rgba(79, 129, 189, 0.2) -10px 10px, rgba(79, 129, 189, 0.1) -15px 15px, rgba(79, 129, 189, 0.1) -20px 20px, rgba(79, 129, 189, 0.05) -25px 25px",
 
-          transform: "translateY(-1px)",
+          transform: "translateY(-6px) scale(1.02)",
           transitionDuration: "0.4s",
           transitionTimingFunction: "ease-in-out",
           bg: `rgba(96, 85, 83, 0.1)`,
