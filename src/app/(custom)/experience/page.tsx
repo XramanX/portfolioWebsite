@@ -25,7 +25,7 @@ const Experience: React.FC<any> = () => {
       location: "Bengaluru",
       description:
         "As a Full Stack Developer at VueData Technologies, I contribute to the development of innovative web applications. I use ReactJS and NextJS for front-end development, creating intuitive and visually appealing user interfaces. For back-end development, I employ NodeJS, designing and implementing robust and scalable server-side functionalities. Collaborating closely with cross-functional teams, including designers and product managers, I ensure the delivery of high-quality software solutions. I actively participate in code reviews, ensuring adherence to coding standards and best practices. Proactively identifying areas for improvement, I implement optimizations to enhance performance and user experience. I consistently meet project deadlines, contributing to the overall success of the development team.",
-      skills: ["ReactJS", "NextJS", "NodeJS", "Optimization", "TypeScript"],
+      skills: ["ReactJS", "NextJS", "NodeJS", "TypeScript"],
       link: "https://www.vuedata.com/",
     },
     {
