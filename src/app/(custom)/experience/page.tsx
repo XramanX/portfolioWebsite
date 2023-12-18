@@ -87,7 +87,7 @@ const Experience: React.FC<any> = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          Check out my full Resume
+          Check out my full Résumé
           <motion.div
             animate={{ x: isHovered ? 10 : 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}

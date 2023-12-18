@@ -15,7 +15,7 @@ export function Navbar({ onItemSelect, selectedNavItem }: NavbarProps) {
     { label: "ABOUT", targetId: "about-section" },
     { label: "EXPERIENCE", targetId: "experience-section" },
     { label: "PROJECTS", targetId: "projects-section" },
-    { label: "CONTACT", targetId: "contact-section" },
+    // { label: "CONTACT", targetId: "contact-section" },
   ];
 
   const handleItemHover = (label: string) => {
