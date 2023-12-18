@@ -16,15 +16,26 @@ import { useEffect, useState } from "react";
 import SocialMediaLinks from "../../components/socialMedia";
 import Footer from "../footer/page";
 import { theme } from "../../styles/chakra/theme";
+import ContactPopup from "../../components/contactPopup";
 
 const LandingPage: React.FC = () => {
   const [isLargeScreen] = useMediaQuery("(min-width: 1100px)");
   const [isSmallerThanMd] = useMediaQuery("(max-width: 48em)");
+  const [isMidScreen] = useMediaQuery(
+    "(min-width: 769px) and (max-width: 940px)"
+  );
+  const [isContactHovered, setContactHovered] = useState(false);
+  const [isContactClicked, setContactClicked] = useState(false);
   const containerFlex = isLargeScreen ? { base: 1, md: 2 } : 1;
   const paddingValue = isLargeScreen ? 10 : 0;
   const [selectedNavItem, setSelectedNavItem] = useState("ABOUT");
   const handleNavbarItemSelect = (label: string) => {
     setSelectedNavItem(label);
+  };
+  const handleContactSubmit: any = (formData: FormData) => {
+    console.log("Form submitted:", formData);
+
+    setContactClicked(false);
   };
 
   useEffect(() => {
@@ -63,7 +74,21 @@ const LandingPage: React.FC = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const handleContactHover = () => {
+    setContactHovered(true);
+  };
 
+  const handleContactLeave = () => {
+    setContactHovered(false);
+  };
+
+  const handleContactClick = () => {
+    setContactClicked(true);
+  };
+
+  const handleContactClose = () => {
+    setContactClicked(false);
+  };
   // const controls = useAnimation();
   // const bounceAnimation: any = {
   //   y: [0, -10, 0],
@@ -86,11 +111,11 @@ const LandingPage: React.FC = () => {
       padding={paddingValue}
     >
       <Flex
-        padding="4"
+        padding={"4"}
         flexDirection="column"
         gap={20}
         flex={containerFlex}
-        position={isSmallerThanMd ? "relative" : "fixed"}
+        position={isSmallerThanMd || isMidScreen ? "relative" : "fixed"}
         height="90%"
         justifyContent="space-between"
       >
@@ -99,7 +124,7 @@ const LandingPage: React.FC = () => {
             padding={{ base: 1, md: 1, sm: 6 }}
             flexDirection="column"
             gap={2}
-            w={isSmallerThanMd ? "auto" : "400px"}
+            w={isSmallerThanMd || isMidScreen ? "auto" : "400px"}
           >
             <Text fontSize="2xl" fontWeight="bold">
               Ramandeep Singh
@@ -110,7 +135,7 @@ const LandingPage: React.FC = () => {
               innovative solutions and a commitment to continuous learning.
             </Text>
           </Flex>
-          {isSmallerThanMd ? (
+          {isSmallerThanMd || isMidScreen ? (
             <></>
           ) : (
             <Flex mt={5}>
@@ -128,7 +153,11 @@ const LandingPage: React.FC = () => {
       </Flex>
 
       <Box
-        marginLeft={{ base: 0, md: "500px" }}
+        marginLeft={{
+          base: 0,
+          md: isSmallerThanMd ? "0px" : isMidScreen ? "0px" : "500px",
+        }}
+        w={isSmallerThanMd || isMidScreen ? "200px" : "auto"}
         padding={{ base: 1, md: 4, sm: 6 }}
         flex={{ base: 1, md: 3 }}
         flexDirection="column"
@@ -141,7 +170,7 @@ const LandingPage: React.FC = () => {
         <Projects />
         <Footer />
       </Box>
-      {isSmallerThanMd ? (
+      {/* {isSmallerThanMd || isMidScreen ? (
         <></>
       ) : (
         <Box
@@ -151,10 +180,28 @@ const LandingPage: React.FC = () => {
           margin="20px"
           h="100px"
           w="100px"
+          onMouseEnter={handleContactHover}
+          onMouseLeave={handleContactLeave}
+          onClick={handleContactClick}
         >
-          <Image src="/contact.gif" alt="Contact GIF" />
+          <Image
+            src="/contact.gif"
+            alt="Contact GIF"
+            style={{
+              transform: isContactHovered
+                ? "translateY(-5px)"
+                : "translateY(0)",
+            }}
+          />
+          {isContactClicked && (
+            <ContactPopup
+              isOpen={isContactClicked}
+              onClose={handleContactClose}
+              onSubmit={handleContactSubmit}
+            />
+          )}
         </Box>
-      )}
+      )} */}
     </Box>
   );
 };
