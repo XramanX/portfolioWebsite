@@ -50,10 +50,8 @@ const Experience: React.FC<any> = () => {
 
   const arrowSize = "16px";
 
-  // Use useMediaQuery to check for the current breakpoint
   const isLargeScreen = useMediaQuery("(min-width: 48em)");
 
-  // Use the result to determine the number of columns
   const columns = isLargeScreen ? 2 : 1;
 
   return (

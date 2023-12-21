@@ -6,9 +6,18 @@ import Head from "next/head";
 import { theme } from "../styles/chakra/theme";
 import { useEffect, useState } from "react";
 import LandingPage from "../(custom)/landingPage/page";
+import HomePage from "../(custom)/home/page";
 
 export default function Home() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [showHomePage, setShowHomePage] = useState(true);
+
+  const togglePages = (value: boolean) => {
+    const interval = setInterval(() => {
+      setShowHomePage(value);
+    }, 300);
+    return () => clearInterval(interval);
+  };
 
   useEffect(() => {
     const handleMouseMove = (event: any) => {
@@ -26,8 +35,12 @@ export default function Home() {
   }, []);
 
   const gradientStyle = {
-    backgroundImage: `radial-gradient(400px at ${cursorPosition.x}px ${cursorPosition.y}px, ${theme.colors.brand.quaternary} 15%, transparent 90%)`,
-    backgroundColor: theme.colors.brand.primary,
+    backgroundImage: `radial-gradient(400px at ${cursorPosition.x}px ${
+      cursorPosition.y
+    }px, ${
+      !showHomePage ? theme.colors.brand.quaternary : ""
+    } 15%, transparent 90%)`,
+    backgroundColor: !showHomePage ? theme.colors.brand.primary : "#000",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
@@ -45,7 +58,11 @@ export default function Home() {
           />
         </Head>
         <Box mx="auto" flex="1">
-          <LandingPage />
+          {showHomePage ? (
+            <HomePage togglePages={togglePages} />
+          ) : (
+            <LandingPage togglePages={togglePages} />
+          )}
         </Box>
       </ChakraProvider>
     </Box>
