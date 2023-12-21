@@ -17,11 +17,7 @@ import SocialMediaLinks from "../../components/socialMedia";
 import Footer from "../footer/page";
 import { theme } from "../../styles/chakra/theme";
 
-type LandingPageProps = {
-  togglePages: (value: boolean) => void;
-};
-
-const LandingPage: React.FC<LandingPageProps> = ({ togglePages }) => {
+const LandingPage: React.FC = () => {
   const [isLargeScreen] = useMediaQuery("(min-width: 1100px)");
   const [isSmallerThanMd] = useMediaQuery("(max-width: 48em)");
   const [isMidScreen] = useMediaQuery(

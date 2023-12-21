@@ -14,10 +14,10 @@ import { theme } from "../../styles/chakra/theme";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 
 type HomePageProps = {
-  togglePages: (value: boolean) => void;
+  togglePages: (value: any) => void;
 };
-const HomePage: React.FC<HomePageProps> = ({ togglePages }) => {
-  const technologies = [
+const HomePage: React.FC<any> = ({ togglePages }) => {
+  const technologies: string[] = [
     "JavaScript",
     "React.js",
     "Next.js",
@@ -34,7 +34,7 @@ const HomePage: React.FC<HomePageProps> = ({ togglePages }) => {
   const [currentTechIndex, setCurrentTechIndex] = useState(0);
   const containerFlex = isLargeScreen ? { base: 1, md: 2 } : 1;
   const paddingValue = isLargeScreen ? 10 : 0;
-  const controls = useAnimation();
+  const controls: any = useAnimation();
   let techControls: any = useAnimation();
 
   const techVariants = {
