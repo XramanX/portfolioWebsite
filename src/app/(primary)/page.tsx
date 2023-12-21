@@ -12,13 +12,12 @@ export default function Home() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [showHomePage, setShowHomePage] = useState(true);
 
-  const togglePages = (value: boolean) => {
+  const togglePages = (value: boolean): (() => void) => {
     const interval = setInterval(() => {
       setShowHomePage(value);
     }, 300);
     return () => clearInterval(interval);
   };
-
   useEffect(() => {
     const handleMouseMove = (event: any) => {
       setCursorPosition({
@@ -61,7 +60,7 @@ export default function Home() {
           {showHomePage ? (
             <HomePage togglePages={togglePages} />
           ) : (
-            <LandingPage togglePages={togglePages} />
+            <LandingPage />
           )}
         </Box>
       </ChakraProvider>
