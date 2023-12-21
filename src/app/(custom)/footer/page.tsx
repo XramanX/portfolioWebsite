@@ -20,8 +20,18 @@ const Footer: React.FC = () => {
         >
           Visual Studio Code
         </Text>{" "}
-        by this gaming virtuoso. Crafted with Next.js and fortified with the
-        mighty{" "}
+        by this gaming virtuoso. Crafted with{" "}
+        <Text
+          as="a"
+          href="https://nextjs.org/"
+          color="white"
+          _hover={{ textDecoration: "none", color: theme.colors.brand.teal }}
+          transition={"color 0.4s"}
+          {...externalLinkProps}
+        >
+          Next.js
+        </Text>{" "}
+        and fortified with the mighty{" "}
         <Text
           as="a"
           href="https://chakra-ui.com/"

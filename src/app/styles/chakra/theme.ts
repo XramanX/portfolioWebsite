@@ -1,4 +1,4 @@
-import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, type ThemeConfig, theme as base  } from "@chakra-ui/react";
 const config: ThemeConfig = {
   initialColorMode: "dark",
   useSystemColorMode: true,
@@ -29,14 +29,20 @@ export const theme = extendTheme({
       teal:"#4DB6AC",
       ghost:"#8B9CBA",
       skillTextColor:"#5BE3CF",
-      skillBgColor:"#183452"
+      skillBgColor:"#183452",
+      mintGreen:"#CCF381",
+      darkBlue:"#183452",
+      vibrantPurple:"#4831D4",
+      white:"#fff",
+      lavender:"#BF94E4"
     },
   },
   config,
   fonts: {
     body: "Poppins, sans-serif",
     heading: "Poppins, sans-serif",
-    mono: "Menlo, monospace",
+    // mono: "Menlo, monospace",
+    anton: `'Anton', sans-serif`,
   },
   fontSizes: {
     xs: "12px",
