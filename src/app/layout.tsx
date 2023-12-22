@@ -2,10 +2,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { AnimatePresence } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: `Raman's Portfolio`,
   description: "Hey! Let connect and work together",
 };
