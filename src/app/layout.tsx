@@ -1,10 +1,9 @@
-"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: `Raman's Portfolio`,
   description: "Hey! Let connect and work together",
 };
