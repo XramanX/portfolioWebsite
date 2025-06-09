@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 import { theme } from "../../styles/chakra/theme";

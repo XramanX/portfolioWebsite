@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { TiArrowForward } from "react-icons/ti";
 import { motion } from "framer-motion";
 import { theme } from "../../styles/chakra/theme";
+
 type Props = {};
 type ExperienceProps = {
   jobDuration: string;
@@ -16,12 +17,22 @@ type ExperienceProps = {
   link: string;
 }[];
 
-const Experience: React.FC<any> = () => {
+const Experience: React.FC<Props> = () => {
   const experiences: ExperienceProps = [
     {
-      jobDuration: "November 2021 - Present",
+      jobDuration: "September 2024 - May 2025",
+      company: "SkyFobs",
+      role: "Software Engineer",
+      location: "Remote",
+      description:
+        "Developed multiple high-impact web applications, including a real-time chat platform and a mobile-first high-concurrency engagement system. Integrated IndexedDB for local data persistence, reducing backend API load and enabling offline capabilities. Led frontend design from scratch, optimizing UI/UX for seamless experiences and boosting engagement metrics. Implemented Sockets for real-time communication and updates, driving responsiveness. Built a scalable, modular codebase to accelerate development and future feature integration.",
+      skills: ["ReactJS", "NextJS", "IndexedDB", "WebSockets", "UI/UX"],
+      link: "",
+    },
+    {
+      jobDuration: "November 2021 - September 2024",
       company: "VueData Technologies",
-      role: "Full Stack Developer",
+      role: "Software Engineer",
       location: "Bengaluru",
       description:
         "As a Full Stack Developer at VueData Technologies, I contribute to the development of innovative web applications. I use ReactJS and NextJS for front-end development, creating intuitive and visually appealing user interfaces. For back-end development, I employ NodeJS, designing and implementing robust and scalable server-side functionalities. Collaborating closely with cross-functional teams, including designers and product managers, I ensure the delivery of high-quality software solutions. I actively participate in code reviews, ensuring adherence to coding standards and best practices. Proactively identifying areas for improvement, I implement optimizations to enhance performance and user experience. I consistently meet project deadlines, contributing to the overall success of the development team.",
@@ -39,36 +50,31 @@ const Experience: React.FC<any> = () => {
       link: "https://www.vuedata.com/",
     },
   ];
-  const [isHovered, setHovered] = useState(false);
-  const handleMouseEnter = () => {
-    setHovered(true);
-  };
 
-  const handleMouseLeave = () => {
-    setHovered(false);
-  };
+  const [isHovered, setHovered] = useState(false);
+  const handleMouseEnter = () => setHovered(true);
+  const handleMouseLeave = () => setHovered(false);
 
   const arrowSize = "16px";
-
-  const isLargeScreen = useMediaQuery("(min-width: 48em)");
-
+  const [isLargeScreen] = useMediaQuery("(min-width: 48em)");
   const columns = isLargeScreen ? 2 : 1;
 
   return (
     <Box id="experience-section">
       <Flex
         flexDirection="column"
-        gap={2}
+        gap={4}
         css={{
           columns: columns,
           breakInside: "auto",
         }}
       >
-        {experiences.map((experience: any, index: number) => (
-          <ExperienceCard key={index} experience={experience} />
+        {experiences.map((exp, idx) => (
+          <ExperienceCard key={idx} experience={exp} />
         ))}
       </Flex>
-      <Flex w="full" align="center" textAlign="center" p={5}>
+
+      <Flex w="full" align="center" justify="center" p={5}>
         <Link
           href="/Ramandeep_resume.pdf"
           target="_blank"
@@ -90,7 +96,7 @@ const Experience: React.FC<any> = () => {
             animate={{ x: isHovered ? 10 : 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
           >
-            <TiArrowForward style={{ marginTop: "1px", marginLeft: "4px" }} />
+            <TiArrowForward style={{ marginLeft: "4px" }} size={arrowSize} />
           </motion.div>
         </Link>
       </Flex>

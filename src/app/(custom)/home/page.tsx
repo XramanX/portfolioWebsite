@@ -16,6 +16,7 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 type HomePageProps = {
   togglePages: (value: any) => void;
 };
+
 const HomePage: React.FC<any> = ({ togglePages }) => {
   const technologies: string[] = [
     "JavaScript",
@@ -23,6 +24,7 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
     "Next.js",
     "TypeScript",
     "Node.js",
+    "Web Sockets",
   ];
   const getRandomDirection = () => (Math.random() > 0.5 ? 1 : -1);
   const [isLargeScreen] = useMediaQuery("(min-width: 1100px)");
@@ -38,17 +40,18 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
   let techControls: any = useAnimation();
 
   const techVariants = {
-    hidden: { opacity: 0, y: "-30%", duration: 0.1 },
-    sliding: {
+    hidden: {
       opacity: 0,
-      y: "30%",
+      y: "10%",
+      transition: { duration: 0.2, ease: "easeOut" },
     },
     visible: {
       opacity: 1,
       y: "0%",
-      transition: { duration: 0.1, ease: "easeInOut" },
+      transition: { duration: 0.4, ease: [0.25, 0.8, 0.25, 1] },
     },
   };
+
   const containerVariants = {
     exit: {
       opacity: 0,
@@ -56,6 +59,7 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
       transition: { duration: 0.2, ease: "easeInOut" },
     },
   };
+
   const exitPictureAnimation = {
     scale: [10, 1],
     opacity: 0,
@@ -68,6 +72,7 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
     opacity: 1,
     transition: { duration: 0.3, ease: "easeInOut" },
   };
+
   useEffect(() => {
     let isMounted = true;
 
@@ -79,9 +84,6 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
         setCurrentTechIndex(
           (prevIndex) => (prevIndex + 1) % technologies.length
         );
-
-        await techControls.start("sliding");
-        if (!isMounted) return;
 
         await techControls.start("visible");
       } catch (error) {
@@ -136,7 +138,6 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
                 mb={6}
                 color={theme.colors.brand.mintGreen}
                 textAlign={isSmallerThanMd ? "center" : "start"}
-                // fontFamily="anton"
               >
                 <Text fontSize={isSmallerThanMd ? "48px" : "78px"}>
                   I'm Raman
@@ -147,8 +148,7 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
                 textAlign={isSmallerThanMd ? "start" : "start"}
                 fontSize={isSmallerThanMd ? "lg" : "xl"}
               >
-                As a full-stack web developer deeply entrenched in the world of
-                {` `}
+                As a full-stack web developer deeply entrenched in the world of{" "}
                 <motion.span
                   animate={techControls}
                   variants={techVariants}
@@ -160,10 +160,13 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
                 >
                   {technologies[currentTechIndex]}
                 </motion.span>
-                <br></br>I also reign supreme in the digital battlegrounds as a
-                first-person shooter aficionado.<br></br>Inspired by the
-                rhythmic beats of Hip-Hop, let's collaborate to seamlessly weave
-                code and creativity, crafting compelling online experiences.
+                <br />
+                I also reign supreme in the digital battlegrounds as a
+                first-person shooter aficionado.
+                <br />
+                Inspired by the rhythmic beats of Hip-Hop, let's collaborate to
+                seamlessly weave code and creativity, crafting compelling online
+                experiences.
               </Box>
               <motion.button
                 whileHover={{ scale: [1.1, 1.2], x: isSmallerThanMd ? 0 : 20 }}
@@ -240,9 +243,7 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
                     alt="Profile Picture"
                     boxSize="100%"
                   />
-                ) : (
-                  <></>
-                )}
+                ) : null}
               </motion.div>
             </Circle>
           </motion.div>
