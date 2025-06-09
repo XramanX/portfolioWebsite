@@ -20,7 +20,7 @@ type ExperienceProps = {
 const Experience: React.FC<Props> = () => {
   const experiences: ExperienceProps = [
     {
-      jobDuration: "September 2024 - May 2025",
+      jobDuration: "September 2024 - June 2025",
       company: "SkyFobs",
       role: "Software Engineer",
       location: "Remote",
