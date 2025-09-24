@@ -4,8 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:host": "next dev -H 0.0.0.0",
+    "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3000",
+    "clean": "rimraf .next",
+    "rebuild": "npm run clean && npm run build",
     "lint": "next lint"
   },
   "dependencies": {
@@ -42,6 +46,7 @@
   },
   "devDependencies": {
     "@types/ramda": "^0.29.3",
-    "@types/react-datepicker": "^4.19.1"
+    "@types/react-datepicker": "^4.19.1",
+    "rimraf": "^5.0.0"
   }
 }

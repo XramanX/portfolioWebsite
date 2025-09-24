@@ -12,6 +12,7 @@ import { motion, useAnimation } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { theme } from "../../styles/chakra/theme";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import NextImage from "next/image";
 
 type HomePageProps = {
   togglePages: (value: any) => void;
@@ -238,10 +239,12 @@ const HomePage: React.FC<any> = ({ togglePages }) => {
             >
               <motion.div initial={{ opacity: 0, x: 200 }} animate={controls}>
                 {!pictureHover ? (
-                  <Image
+                  <NextImage
                     src="/myPfp.png"
                     alt="Profile Picture"
-                    boxSize="100%"
+                    width={400}
+                    height={400}
+                    priority
                   />
                 ) : null}
               </motion.div>
