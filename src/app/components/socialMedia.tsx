@@ -52,10 +52,10 @@ const SocialMediaLinks: React.FC = () => {
         href="https://www.instagram.com/ramandeep.08/"
         icon={FaInstagram}
       />
-      <SocialMediaLink
+      {/* <SocialMediaLink
         href="https://twitter.com/ramandeep008"
         icon={FaSquareXTwitter}
-      />
+      /> */}
       <SocialMediaLink href="https://github.com/XramanX" icon={FaGithub} />
     </Flex>
   );
