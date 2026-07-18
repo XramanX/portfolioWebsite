@@ -15,7 +15,8 @@ export function Navbar({ onItemSelect, selectedNavItem }: NavbarProps) {
     { label: "ABOUT", targetId: "about-section" },
     { label: "EXPERIENCE", targetId: "experience-section" },
     { label: "PROJECTS", targetId: "projects-section" },
-    // { label: "CONTACT", targetId: "contact-section" },
+    { label: "GITHUB", targetId: "github-section" },
+    { label: "CONTACT", targetId: "footer-section" },
   ];
 
   const handleItemHover = (label: string) => {
@@ -35,7 +36,8 @@ export function Navbar({ onItemSelect, selectedNavItem }: NavbarProps) {
       const experienceSection: any =
         document.getElementById("experience-section");
       const projectsSection: any = document.getElementById("projects-section");
-      const contactSection: any = document.getElementById("contact-section");
+      const githubSection: any = document.getElementById("github-section");
+      const contactSection: any = document.getElementById("footer-section");
 
       if (scrollPosition < aboutSection.offsetTop + aboutSection.clientHeight) {
         onItemSelect("ABOUT");
@@ -49,7 +51,12 @@ export function Navbar({ onItemSelect, selectedNavItem }: NavbarProps) {
         projectsSection.offsetTop + projectsSection.clientHeight
       ) {
         onItemSelect("PROJECTS");
-      } else {
+      } else if (
+        githubSection &&
+        scrollPosition < githubSection.offsetTop + githubSection.clientHeight
+      ) {
+        onItemSelect("GITHUB");
+      } else if (contactSection) {
         onItemSelect("CONTACT");
       }
     };
