@@ -16,6 +16,9 @@ const AboutMePage: React.FC = () => {
       mb={10}
       p={4}
     >
+      <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color={theme.colors.brand.white}>
+        About Me
+      </Text>
       <Text>
         My journey in development began back in high school, sparked by
         curiosity and a desire to build things from scratch. Since then, coding

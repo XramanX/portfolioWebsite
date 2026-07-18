@@ -1,7 +1,8 @@
 "use client";
 import React from "react";
 import ProjectCard from "../../components/projectCard";
-import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
+import { theme } from "../../styles/chakra/theme";
 
 type Props = {};
 type ProjectProps = {
@@ -54,7 +55,10 @@ const Projects = () => {
   const columns = isLargeScreen ? 2 : 1;
 
   return (
-    <Box id="projects-section">
+    <Box id="projects-section" py={8} px={{ base: 4, md: 8 }}>
+      <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color={theme.colors.brand.white} mb={6}>
+        Projects
+      </Text>
       <Flex
         flexDirection="column"
         gap={2}

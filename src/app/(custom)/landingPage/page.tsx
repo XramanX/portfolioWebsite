@@ -1,16 +1,10 @@
 "use client";
-import {
-  Box,
-  Flex,
-  Text,
-  Container,
-  useMediaQuery,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { Navbar } from "../../components/navbar";
 import AboutMePage from "../about/page";
 import Experience from "../experience/page";
 import Projects from "../projects/page";
+import GitHubSection from "../../components/githubSection";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import SocialMediaLinks from "../../components/socialMedia";
@@ -37,6 +31,7 @@ const LandingPage: React.FC = () => {
       const experienceSection: any =
         document.getElementById("experience-section");
       const projectsSection: any = document.getElementById("projects-section");
+      const githubSection: any = document.getElementById("github-section");
       const footerSection: any = document.getElementById("footer-section");
 
       const scrollPosition = window.scrollY;
@@ -54,9 +49,11 @@ const LandingPage: React.FC = () => {
       ) {
         setSelectedNavItem("PROJECTS");
       } else if (
-        scrollPosition <
-        footerSection.offsetTop + footerSection.clientHeight
+        githubSection &&
+        scrollPosition < githubSection.offsetTop + githubSection.clientHeight
       ) {
+        setSelectedNavItem("GITHUB");
+      } else {
         setSelectedNavItem("CONTACT");
       }
     };
@@ -144,6 +141,7 @@ const LandingPage: React.FC = () => {
           <AboutMePage />
           <Experience />
           <Projects />
+          <GitHubSection />
           <Footer />
         </Box>
       </Box>

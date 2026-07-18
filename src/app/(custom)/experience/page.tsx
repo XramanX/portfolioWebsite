@@ -1,6 +1,6 @@
 "use client";
 import ExperienceCard from "../../components/experienceCard";
-import { Box, Flex, Link, useMediaQuery } from "@chakra-ui/react";
+import { Box, Flex, Link, Text, useMediaQuery } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { TiArrowForward } from "react-icons/ti";
 import { motion } from "framer-motion";
@@ -19,6 +19,16 @@ type ExperienceProps = {
 
 const Experience: React.FC<Props> = () => {
   const experiences: ExperienceProps = [
+    {
+      jobDuration: "September 2025 - Present",
+      company: "Deloitte",
+      role: "Senior Frontend Developer",
+      location: "Chhattisgarh, India (Government Project)",
+      description:
+        "Worked on a government digital services project for the state of Chhattisgarh, building complex, accessible React.js forms using Formik, implementing secure state handling, and integrating with backend APIs. Focused on performance, accessibility, and compliance for public-sector requirements.",
+      skills: ["ReactJS", "Formik", "TypeScript", "Accessibility", "Forms"],
+      link: "https://www.deloitte.com/",
+    },
     {
       jobDuration: "September 2024 - August 2025",
       company: "SkyFobs",
@@ -60,7 +70,10 @@ const Experience: React.FC<Props> = () => {
   const columns = isLargeScreen ? 2 : 1;
 
   return (
-    <Box id="experience-section">
+    <Box id="experience-section" py={8} px={{ base: 4, md: 8 }}>
+      <Text fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold" color={theme.colors.brand.white} mb={6}>
+        Experience
+      </Text>
       <Flex
         flexDirection="column"
         gap={4}
